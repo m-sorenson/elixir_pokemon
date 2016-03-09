@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Elixir plays Pokemon</title>
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+  </head>
+
+  <body class="ui segment inverted">
+    <div class="ui grid">
+
+      <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
+      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+
+      <div class="three column row">
+          <%= render @view_module, @view_template, assigns %>
+      </div>
+      <div class="ui inverted segment three column row">
+
+        <div class="column">
+          <div class="ui middle aligned five column centered grid">
+          <div class="ui inverted segment row">
+            <div class="column">
+              <button id="left" class="ui blue basic inverted icon button">
+                <i class="icon angle left"></i>
+              </button>
+            </div>
+            <div class="column">
+              <button id="up" class="ui blue basic inverted icon button">
+                <i class="icon angle up"></i>
+              </button>
+              <button id="down" class="ui blue basic inverted icon button">
+                <i class="icon angle down"></i>
+              </button>
+            </div>
+            <div class="column">
+              <button id="right" class="ui blue basic inverted icon button">
+                <i class="icon angle right"></i>
+              </button>
+            </div>
+          </div>
+          </div>
+        </div>
+
+        <div class="ui column">
+          <button id="start" class="ui basic blue inverted button">
+            Start
+          </button>
+          <button id="select" class="ui basic blue inverted button">
+            Select
+          </button>
+        </div>
+        <div class="ui column">
+          <button id="a" class="ui basic blue inverted button">
+            A
+          </button>
+          <button id="b" class="ui basic blue inverted button">
+            B
+          </button>
+        </div>
+
+      </div>
+
+    </div> <!-- /container -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.js"></script>
+    <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
+  </body>
+</html>
