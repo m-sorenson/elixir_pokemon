@@ -1,5 +1,5 @@
   <div class="column">
-    <image class="ui fluid image yellow">
+    <image class="ui fluid image red">
     </image>
   </div>
   <div class="column">
@@ -7,6 +7,6 @@
     </image>
   </div>
   <div class="column">
-    <image class="ui fluid image yellow">
+    <image class="ui fluid image blue">
     </image>
   </div>

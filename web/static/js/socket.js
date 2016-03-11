@@ -62,6 +62,12 @@ channel.join()
 channel.on("yellow", (data) => {
   $('.yellow').attr('src', data.frame)
 })
+channel.on("red", (data) => {
+  $('.red').attr('src', data.frame)
+})
+channel.on("blue", (data) => {
+  $('.blue').attr('src', data.frame)
+})
 
 $('#left').click(() => {
   channel.push("move", { key: "left" })

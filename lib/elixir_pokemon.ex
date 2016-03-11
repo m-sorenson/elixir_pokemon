@@ -1,7 +1,9 @@
 defmodule EP do
   use Application
 
-  @pokemon_port EP.PP
+  @yellow :yellow
+  @red :red
+  @blue :blue
 
   # See http://elixir-lang.org/docs/stable/elixir/Application.html
   # for more information on OTP Applications
@@ -15,7 +17,9 @@ defmodule EP do
       supervisor(EP.Repo, []),
       # Here you could define other workers and supervisors as children
       # worker(EP.Worker, [arg1, arg2, arg3]),
-      worker(EP.PP, [[name: EP.PP]])
+      worker(EP.PP, [%{version: @yellow, rom: "'/home/michael/Downloads/Pokemon\ Yellow.gb'"}, [name: @yellow]], [id: @yellow]),
+      worker(EP.PP, [%{version: @red, rom: "'/home/michael/Downloads/Pokemon\ Red.gb'"}, [name: @red]], [id: @red]),
+      worker(EP.PP, [%{version: @blue, rom: "'/home/michael/Downloads/Pokemon\ Blue.gb'"}, [name: @blue]], [id: @blue])
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
