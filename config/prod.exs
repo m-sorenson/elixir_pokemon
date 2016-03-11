@@ -16,6 +16,13 @@ config :elixir_pokemon, EP.Endpoint,
   url: [host: "example.com", port: 80],
   cache_static_manifest: "priv/static/manifest.json"
 
+config :elixir_pokemon,
+yellow: "'/root/games/Pokemon\ Yellow.gb'",
+red: "'/root/games/Pokemon\ Red.gb'",
+blue: "'/root/games/Pokemon\ Blue.gb'",
+start: "/root/.nvm/v4.4.0/bin/node /root/deps/gameBoy/index.js "
+
+
 # Do not print debug messages in production
 config :logger, level: :info
 

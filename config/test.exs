@@ -17,3 +17,7 @@ config :elixir_pokemon, EP.Repo,
   database: "elixir_pokemon_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
+
+  config :elixir_pokemon, :roms,
+  yellow: '100%',
+  start: '/test'

@@ -40,3 +40,10 @@ config :elixir_pokemon, EP.Repo,
   database: "elixir_pokemon_dev",
   hostname: "localhost",
   pool_size: 10
+
+
+config :elixir_pokemon,
+yellow: "'/home/michael/Downloads/Pokemon\ Yellow.gb'",
+red: "'/home/michael/Downloads/Pokemon\ Red.gb'",
+blue: "'/home/michael/Downloads/Pokemon\ Blue.gb'",
+start: "start_pokemon "

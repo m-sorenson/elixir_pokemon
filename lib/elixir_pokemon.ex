@@ -10,6 +10,11 @@ defmodule EP do
   def start(_type, _args) do
     import Supervisor.Spec, warn: false
 
+    yellow_rom = Application.fetch_env! :elixir_pokemon, :yellow
+    red_rom = Application.fetch_env! :elixir_pokemon, :red
+    blue_rom = Application.fetch_env! :elixir_pokemon, :blue
+    start_command = Application.fetch_env! :elixir_pokemon, :start
+
     children = [
       # Start the endpoint when the application starts
       supervisor(EP.Endpoint, []),
@@ -17,9 +22,9 @@ defmodule EP do
       supervisor(EP.Repo, []),
       # Here you could define other workers and supervisors as children
       # worker(EP.Worker, [arg1, arg2, arg3]),
-      worker(EP.PP, [%{version: @yellow, rom: "'/home/michael/Downloads/Pokemon\ Yellow.gb'"}, [name: @yellow]], [id: @yellow]),
-      worker(EP.PP, [%{version: @red, rom: "'/home/michael/Downloads/Pokemon\ Red.gb'"}, [name: @red]], [id: @red]),
-      worker(EP.PP, [%{version: @blue, rom: "'/home/michael/Downloads/Pokemon\ Blue.gb'"}, [name: @blue]], [id: @blue])
+      worker(EP.PP, [%{version: @yellow, rom: yellow_rom, cmd: start_command}, [name: @yellow]], [id: @yellow]),
+      worker(EP.PP, [%{version: @red, rom: red_rom, cmd: start_command}, [name: @red]], [id: @red]),
+      worker(EP.PP, [%{version: @blue, rom: blue_rom, cmd: start_command}, [name: @blue]], [id: @blue])
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html

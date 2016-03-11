@@ -15,8 +15,8 @@ defmodule EP.PP do
     GenServer.start_link(__MODULE__, args, opts)
   end
 
-  def init(%{rom: rom_path, version: color}) do
-    cmd = "start_pokemon " <> rom_path
+  def init(%{rom: rom_path, version: color, cmd: start}) do
+    cmd = start <> rom_path
     port = Port.open({:spawn, cmd}, [:binary])
     {:ok, %{game: port, version: color}}
   end
