@@ -53,11 +53,14 @@ let socket = new Socket("/socket", {params: {token: window.userToken}})
 
 socket.connect()
 
-// Now that you are connected, you can join channels with a topic:
 let channel = socket.channel("rooms:lobby", {})
 channel.join()
   .receive("ok", resp => { console.log("Joined successfully", resp) })
   .receive("error", resp => { console.log("Unable to join", resp) })
+
+function sendAction (action) {
+  channel.push("move", { key: action })
+}
 
 channel.on("yellow", (data) => {
   $('.yellow').attr('src', data.frame)
@@ -70,28 +73,46 @@ channel.on("blue", (data) => {
 })
 
 $('#left').click(() => {
-  channel.push("move", { key: "left" })
+  sendAction("left")
 })
 $('#right').click(() => {
-  channel.push("move", { key: "right" })
+  sendAction("right")
 })
 $('#up').click(() => {
-  channel.push("move", { key: "up" })
+  sendAction("up")
 })
 $('#down').click(() => {
-  channel.push("move", { key: "down" })
+  sendAction("down")
 })
 $('#start').click(() => {
-  channel.push("move", { key: "start" })
+  sendAction("start")
 })
 $('#select').click(() => {
-  channel.push("move", { key: "select" })
+  sendAction("select")
 })
 $('#a').click(() => {
-  channel.push("move", { key: "a" })
+  sendAction("a")
 })
 $('#b').click(() => {
-  channel.push("move", { key: "b" })
+  sendAction("b")
+})
+
+let actionMapping = {
+  13: "start",
+  32: "select",
+  37: "left",
+  38: "up",
+  39: "right",
+  40: "down",
+  65: "a",
+  66: "b"
+}
+
+$(document).keydown(function (evt) {
+  let key = evt.keyCode
+  if (actionMapping[key]) {
+    sendAction(actionMapping[key])
+  }
 })
 
 export default socket
